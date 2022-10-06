@@ -50,7 +50,7 @@ const Header = () => {
     className="app__header-img"
     
     >
-      <img src={images.profile} alt="profile_bg" /> 
+      <img src={images.risper_profile} alt="profile_bg" /> 
       {/* replace with my own picture */}
       <motion.img
       whileInView={{ scale:[0, 1]}}
