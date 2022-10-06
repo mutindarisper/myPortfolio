@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactTooltip from 'react-tooltip'
 import { motion } from 'framer-motion'
-import { AppWrap } from '../../wrapper'
+import { AppWrap, MotionWrap } from '../../wrapper'
 import {urlFor, client } from '../../client'
 
 import './Skills.scss'
@@ -20,6 +20,7 @@ const Skills = () => {
 
     client.fetch(query)
     .then( (data) => {
+      console.log(data, 'experiences data ')
       setExperiences(data)
       
     })
@@ -60,33 +61,54 @@ const Skills = () => {
         </motion.div>
 
         <motion.div className='app__skills-exp'>
-              {experiences?.works?.map( (work) => (
-                <>
-
-                <motion.div
-                 whileInView={{ opacity: [0, 1] }}
-                 transition={{ duration: 0.5}}
-                 className="app__skills-exp-work app_flex"
-                 data-tip
-                 data-for={work.name}
-                 key={work.name}
+          {/* {console.log(experiences.works, 'here')} */}
+              {experiences?.map( (experiences) => (
+                <motion.div className='app__skills-exp-item'
+                key={experiences.year}
                 >
-                  <h4 className='bold-text'>{work.name} </h4>
-                  <p className='p-text'>{work.company}</p>
+                  <div className='app__skills-exp-year'>
+                      <p className='bold-text'>
+                        {experiences.year}
+                      </p>
+                  </div>
+
+                  <motion.div className='app__skills-exp-works'>
+                      {
+                        experiences.works.map( (work) => (
+                          <>
+
+                              <motion.div
+                              whileInView={{ opacity: [0, 1] }}
+                              transition={{ duration: 0.5}}
+                              className="app__skills-exp-work app_flex"
+                              data-tip
+                              data-for={work.name}
+                              key={work.name}
+                              >
+                                <h4 className='bold-text'>{work.name} </h4>
+                                <p className='p-text'>{work.company}</p>
+
+                              </motion.div>
+
+                              <ReactTooltip
+                              id={work.name}
+                              effect="solid"
+                              arrowColor='#fff'
+                              className='skills-tooltip'
+                              >
+                                {work.desc}
+
+                              </ReactTooltip>
+
+                              </>
+
+                        ))
+                      }
+                  </motion.div>
 
                 </motion.div>
-
-                <ReactTooltip
-                id={work.name}
-                effect="solid"
-                arrowColor='#fff'
-                className='skills-tooltip'
-                >
-                  {work.desc}
-
-                </ReactTooltip>
-
-                </>
+                // work.year
+                
               ))}
         </motion.div>
    </div>
@@ -94,4 +116,9 @@ const Skills = () => {
   )
 }
 
-export default Skills
+// export default  AppWrap(Skills, 'skills')
+
+export default AppWrap(
+  MotionWrap(Skills, 'app__skills'),
+  'skills',
+  "app__whitebg");
