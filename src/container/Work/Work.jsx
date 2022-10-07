@@ -48,7 +48,7 @@ const Work = () => {
     </h2>
     <div
     className='app__work-filter'>
-      {[ 'Web Applications', 'Geoportals', 'Vue JS', 'Leaflet', 'UI/UX', 'All']
+      {[ 'Web Applications', 'Geoportals', 'Vue JS', 'React', 'Leaflet', 'UI/UX', 'Google Earth Engine', 'All']
       .map( (item, index) => (
         <div 
         key={index}

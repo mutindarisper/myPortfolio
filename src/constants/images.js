@@ -36,6 +36,7 @@ import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
 import logo2 from '../assets/logo2.png'
 import risper_profile from '../assets/risper.png'
+import vue2 from '../assets/vue.jpg'
 
 export default {
   email,
@@ -57,6 +58,7 @@ export default {
   sass,
   typescript,
   vue,
+  vue2,
   about01,
   about02,
   about03,
