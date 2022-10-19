@@ -43,9 +43,9 @@ const About = () => {
 
 
   
-  return (
+  return (   
    <>
-   <h2 className='head-text'> I Know That <span>Good Applications</span> <br /> mean <span>Good Business</span>
+   <h2 className='head-text'> I Build Web Apps using <br /><span>State-of-the-art</span>  Technology
     </h2>
 
     <div className='app__profiles'>
